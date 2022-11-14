@@ -4,5 +4,4 @@ Aufruf mit `go run main.go`
 
 # To-Do
 
-* Dritte Form
-* Seite 311
+* Dritte Form auch abfragen
