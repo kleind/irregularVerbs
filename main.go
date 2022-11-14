@@ -95,10 +95,21 @@ func main() {
 			fmt.Println("Deutsch:", irregularVerbs[r][0])
 			fmt.Print("Infinitive: ")
 			fmt.Scanf("%s", &infinitiveAnswer)
+			if infinitiveAnswer == irregularVerbs[r][1] {
+				fmt.Println(string(colorGreen) + "Das war richtig!" + string(colorReset))
+			} else {
+				fmt.Println(string(colorRed) + "Das war leider falsch. Richtig ist:" + string(colorReset))
+				fmt.Println("Infinitive :" + string(colorGreen) + irregularVerbs[r][1] + string(colorReset))
+			}
 			fmt.Print("Simple Past: ")
 			fmt.Scanf("%s", &simplePastAnswer)
-			if infinitiveAnswer == irregularVerbs[r][1] && simplePastAnswer == irregularVerbs[r][2] {
+			if simplePastAnswer == irregularVerbs[r][2] {
 				fmt.Println(string(colorGreen) + "Das war richtig!" + string(colorReset))
+			} else {
+				fmt.Println(string(colorRed) + "Das war leider falsch. Richtig ist:" + string(colorReset))
+				fmt.Println("Simple Past:" + string(colorGreen) + irregularVerbs[r][2] + string(colorReset))
+			}
+			if infinitiveAnswer == irregularVerbs[r][1] && simplePastAnswer == irregularVerbs[r][2] {
 				fmt.Println("")
 				used = append(used, r)
 				sumCorrectAnswers++
@@ -107,11 +118,7 @@ func main() {
 				fmt.Scanf("%s", &nextWord)
 				clearScreen()
 			} else {
-				fmt.Println(string(colorRed) + "Das war leider falsch. Richtig ist:" + string(colorReset))
-				fmt.Println("Infinitive :" + string(colorGreen) + irregularVerbs[r][1] + string(colorReset))
-				fmt.Println("Simple Past:" + string(colorGreen) + irregularVerbs[r][2] + string(colorReset))
-				fmt.Println("Das Wort kommt später noch einmal." + string(colorReset))
-				fmt.Println("")
+				fmt.Print("\nDas Wort kommt später noch einmal.\n\n" + string(colorReset))
 				r = rand.Intn(len(irregularVerbs))
 				sumWrongAnswers++
 				sumAnswers++
