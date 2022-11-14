@@ -129,8 +129,8 @@ func main() {
 		}
 		if len(used) == len(irregularVerbs) {
 			percent := float64(float64(sumCorrectAnswers) / float64(sumAnswers) * 100)
-			fmt.Println("Du hast alle Verben einmal bekommen.")
-			fmt.Println("Du hast", sumAnswers, "Antworten gegeben. Davon waren", sumCorrectAnswers, "richtig, und", sumWrongAnswers, "falsch eingegeben.")
+			fmt.Println("Du hast alle Verben einmal korrekt beantwortet.")
+			fmt.Println("Du hast", sumAnswers, "Antworten gegeben. Davon waren", sumCorrectAnswers, "richtig, und", sumWrongAnswers, "falsch.")
 			fmt.Printf("%f Prozent deiner Antworten waren korrekt.\n", percent)
 			os.Exit(0)
 		}
