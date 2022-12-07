@@ -148,7 +148,6 @@ func main() {
 			inputReader := bufio.NewReader(os.Stdin)
 			infinitiveAnswer, _ := inputReader.ReadString('\n')
 			infinitiveAnswer = strings.TrimSpace(infinitiveAnswer)
-			fmt.Println(infinitiveAnswer + " to " + irregularVerbs[r][1])
 
 			if infinitiveAnswer == irregularVerbs[r][1] || infinitiveAnswer == "to "+irregularVerbs[r][1] {
 				fmt.Println(string(colorGreen) + "Das war richtig!" + string(colorReset))
