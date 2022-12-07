@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"math/rand"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -132,7 +134,6 @@ func main() {
 	sumAnswers := 0
 
 	r := rand.Intn(len(irregularVerbs))
-	var infinitiveAnswer string
 	var simplePastAnswer string
 	var nextWord string
 	for {
@@ -142,8 +143,14 @@ func main() {
 			fmt.Println("Bisher richtige Antworten:", sumCorrectAnswers, "von", len(irregularVerbs))
 			fmt.Println("Deutsch:", irregularVerbs[r][0])
 			fmt.Print("Infinitive: ")
-			fmt.Scanf("%s", &infinitiveAnswer)
-			if infinitiveAnswer == irregularVerbs[r][1] {
+			// fmt.Scanln(&infinitiveAnswer)
+
+			inputReader := bufio.NewReader(os.Stdin)
+			infinitiveAnswer, _ := inputReader.ReadString('\n')
+			infinitiveAnswer = strings.TrimSpace(infinitiveAnswer)
+			fmt.Println(infinitiveAnswer + " to " + irregularVerbs[r][1])
+
+			if infinitiveAnswer == irregularVerbs[r][1] || infinitiveAnswer == "to "+irregularVerbs[r][1] {
 				fmt.Println(string(colorGreen) + "Das war richtig!" + string(colorReset))
 			} else {
 				fmt.Println(string(colorRed) + "Das war leider falsch. Richtig ist:" + string(colorReset))
@@ -157,7 +164,7 @@ func main() {
 				fmt.Println(string(colorRed) + "Das war leider falsch. Richtig ist:" + string(colorReset))
 				fmt.Println("Simple Past:" + string(colorGreen) + irregularVerbs[r][2] + string(colorReset))
 			}
-			if infinitiveAnswer == irregularVerbs[r][1] && simplePastAnswer == irregularVerbs[r][2] {
+			if (infinitiveAnswer == irregularVerbs[r][1] || infinitiveAnswer == "to "+irregularVerbs[r][1]) && simplePastAnswer == irregularVerbs[r][2] {
 				fmt.Println("")
 				used = append(used, r)
 				sumCorrectAnswers++
