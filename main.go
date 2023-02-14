@@ -135,6 +135,7 @@ func main() {
 
 	r := rand.Intn(len(irregularVerbs))
 	var simplePastAnswer string
+	var pastProgressiveAnswer string
 	var nextWord string
 	for {
 		if contains(used, r) {
@@ -153,17 +154,28 @@ func main() {
 				fmt.Println(string(colorGreen) + "Das war richtig!" + string(colorReset))
 			} else {
 				fmt.Println(string(colorRed) + "Das war leider falsch. Richtig ist:" + string(colorReset))
-				fmt.Println("Infinitive :" + string(colorGreen) + irregularVerbs[r][1] + string(colorReset))
+				fmt.Println("Infinitive: " + string(colorGreen) + irregularVerbs[r][1] + string(colorReset))
 			}
+
 			fmt.Print("Simple Past: ")
 			fmt.Scanf("%s", &simplePastAnswer)
 			if simplePastAnswer == irregularVerbs[r][2] {
 				fmt.Println(string(colorGreen) + "Das war richtig!" + string(colorReset))
 			} else {
 				fmt.Println(string(colorRed) + "Das war leider falsch. Richtig ist:" + string(colorReset))
-				fmt.Println("Simple Past:" + string(colorGreen) + irregularVerbs[r][2] + string(colorReset))
+				fmt.Println("Simple Past: " + string(colorGreen) + irregularVerbs[r][2] + string(colorReset))
 			}
-			if (infinitiveAnswer == irregularVerbs[r][1] || infinitiveAnswer == "to "+irregularVerbs[r][1]) && simplePastAnswer == irregularVerbs[r][2] {
+
+			fmt.Print("Past Progressive: ")
+			fmt.Scanf("%s", &pastProgressiveAnswer)
+			if pastProgressiveAnswer == irregularVerbs[r][3] {
+				fmt.Println(string(colorGreen) + "Das war richtig!" + string(colorReset))
+			} else {
+				fmt.Println(string(colorRed) + "Das war leider falsch. Richtig ist:" + string(colorReset))
+				fmt.Println("Past Progressive: " + string(colorGreen) + irregularVerbs[r][3] + string(colorReset))
+			}
+
+			if (infinitiveAnswer == irregularVerbs[r][1] || infinitiveAnswer == "to "+irregularVerbs[r][1]) && simplePastAnswer == irregularVerbs[r][2] && pastProgressiveAnswer == irregularVerbs[r][3] {
 				fmt.Println("")
 				used = append(used, r)
 				sumCorrectAnswers++
@@ -185,7 +197,7 @@ func main() {
 			percent := float64(float64(sumCorrectAnswers) / float64(sumAnswers) * 100)
 			fmt.Println("Du hast alle Verben einmal korrekt beantwortet.")
 			fmt.Println("Du hast", sumAnswers, "Antworten gegeben. Davon waren", sumCorrectAnswers, "richtig, und", sumWrongAnswers, "falsch.")
-			fmt.Printf("%f Prozent deiner Antworten waren korrekt.\n", percent)
+			fmt.Printf("%.2f Prozent deiner Antworten waren korrekt.\n", percent)
 			os.Exit(0)
 		}
 	}
