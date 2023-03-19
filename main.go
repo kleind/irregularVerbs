@@ -166,7 +166,7 @@ func main() {
 				fmt.Println("Simple Past: " + string(colorGreen) + irregularVerbs[r][2] + string(colorReset))
 			}
 
-			fmt.Print("Past Progressive: ")
+			fmt.Print("Present Perfect: ")
 			fmt.Scanf("%s", &pastProgressiveAnswer)
 			if pastProgressiveAnswer == irregularVerbs[r][3] {
 				fmt.Println(string(colorGreen) + "Das war richtig!" + string(colorReset))
